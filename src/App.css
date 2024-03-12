@@ -74,7 +74,6 @@ body {
 }
 
 .task_list {
-  /* width: 1100px; */
   width: 80%;
   min-height: 300px;
   height: auto;
@@ -83,15 +82,9 @@ body {
   border-radius: 5px;
 }
 
-/* .row{
-   float: left;
-} */
-
 .items {
   height: 80px;
-  /* margin: 15px; */
   padding: 10px;
-  /* margin: 0px 0px 0px 15px; */
   display: flex;
   text-align: left;
   align-items: center;
@@ -101,7 +94,11 @@ body {
 }
 
 .items h5 {
+  width: 120px; 
   margin: 0px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 .items p {
@@ -112,10 +109,6 @@ body {
   text-overflow: ellipsis; 
 }
 
-.info_button :active{
-  color: white !important;
-  background-color: #A35709 !important ;
-}
 
 .info_button {
   padding: 3px 9px;
@@ -126,8 +119,6 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
-
 
 .no_task {
   display: flex;

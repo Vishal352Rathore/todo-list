@@ -58,8 +58,8 @@ function App() {
         toggle === true ?
           <div className='form_design'>
             <div>
-              <input name='title' value={formData.title} onChange={handleChange} placeholder='Title...' required="true" />
-              <input name='input' value={formData.input} onChange={handleChange} placeholder='Input...' required="true" />
+              <input name='title' value={formData.title} onChange={handleChange} placeholder='Title...' />
+              <input name='input' value={formData.input} onChange={handleChange} placeholder='Input...' />
             </div>
             <div>
               <div className='add_button' onClick={handleAdd}><FontAwesomeIcon icon={faPlus} /></div>
@@ -92,12 +92,14 @@ function App() {
                   <div>
                     {
                       visibleItem === index ?
-                        <div style={{ display: "flex" }}>
-                          <div className='info_button' onClick={(e) => handleEdit(item, index)}><FontAwesomeIcon icon={faEdit} /></div>
+                        <div className='pe-2' style={{ display: "flex" }}>
+                          <div className='info_button btn' onClick={(e) => handleEdit(item, index)}><FontAwesomeIcon icon={faEdit} /></div>
                           <div className='info_button btn' type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIndex(index)}><FontAwesomeIcon icon={faTrash} /></div>
                         </div>
                         :
-                        <div className='info_button' onClick={() => toggleVisibility(index)}><FontAwesomeIcon icon={faInfo} /></div>
+                        <div className="pe-2">
+                        <div className='info_button ' onClick={() => toggleVisibility(index)}><FontAwesomeIcon icon={faInfo} /></div>
+                        </div>
                     }
                   </div>
                   </div>
