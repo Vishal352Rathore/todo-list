@@ -98,7 +98,7 @@ function App() {
                         </div>
                         :
                         <div className="pe-2">
-                        <div className='info_button ' onClick={() => toggleVisibility(index)}><FontAwesomeIcon icon={faInfo} /></div>
+                        <div className='info_button btn' onClick={() => toggleVisibility(index)}><FontAwesomeIcon icon={faInfo} /></div>
                         </div>
                     }
                   </div>
