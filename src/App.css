@@ -95,7 +95,7 @@ body {
 }
 
 .items h5 {
-  width: 120px; 
+  width: 100px; 
   margin: 0px;
   white-space: nowrap; 
   overflow: hidden;
@@ -103,7 +103,7 @@ body {
 }
 
 .items p {
-  width: 150px; 
+  width: 120px; 
   margin: 0px;
   white-space: nowrap; 
   overflow: hidden;
