@@ -14,6 +14,8 @@ function App() {
   const [index, setIndex] = useState(0);
   const [toggle, setToggle] = useState(true);
   const [visibleItem, setVisibleItem] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const toggleVisibility = (itemId) => {
     setVisibleItem(itemId === visibleItem ? null : itemId);
@@ -26,14 +28,22 @@ function App() {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    setTask([...task, formData])
-    setFormData({ title: '', input: '' })
+
+    if (formData.title.trim() === '' || formData.input.trim()==='') {
+      setErrorMessage('Title or input can not be empty.');
+      return;
+    }else{
+      setTask([...task, formData])
+      setFormData({ title: '', input: '' })
+      setErrorMessage('');
+    }
   }
 
   const handleEdit = (item, index) => {
     setFormData({ ...formData, title: item.title, input: item.input })
     setIndex(index)
-    setToggle(!toggle)
+    setToggle(false)
+    setErrorMessage('');
   }
 
   const handleDelete = () => {
@@ -42,10 +52,18 @@ function App() {
   }
 
   const finalSubmit = () => {
-    task[index] = formData
-    setTask([...task])
-    setFormData({ title: '', input: '' })
-    setToggle(!toggle)
+
+    if (formData.title.trim() === '' || formData.input.trim()==='') {
+      setErrorMessage('Title or input can not be empty.');
+      return;
+    }else{
+      task[index] = formData
+      setTask([...task])
+      setFormData({ title: '', input: '' })
+      setToggle(!toggle)
+      setErrorMessage('');
+    }
+       
   }
 
   return (
@@ -60,6 +78,7 @@ function App() {
             <div>
               <input name='title' value={formData.title} onChange={handleChange} placeholder='Title...' />
               <input name='input' value={formData.input} onChange={handleChange} placeholder='Input...' />
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </div>
             <div>
               <div className='add_button' onClick={handleAdd}><FontAwesomeIcon icon={faPlus} /></div>
@@ -70,6 +89,7 @@ function App() {
             <div>
               <input name='title' value={formData.title} onChange={handleChange} placeholder='Title...' />
               <textarea type="text" className='input_height' name='input' value={formData.input} onChange={handleChange} placeholder='Input...' />
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </div>
             <div>
               <div style={{ color: "white", fontSize: "8px" }} className='add_button' onClick={finalSubmit} >UPDATE</div>
@@ -93,8 +113,8 @@ function App() {
                     {
                       visibleItem === index ?
                         <div className='pe-2' style={{ display: "flex" }}>
-                          <div className='info_button btn' onClick={(e) => handleEdit(item, index)}><FontAwesomeIcon icon={faEdit} /></div>
-                          <div className='info_button btn' type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIndex(index)}><FontAwesomeIcon icon={faTrash} /></div>
+                          <div className='info_button ' onClick={(e) => handleEdit(item, index)}><FontAwesomeIcon icon={faEdit} /></div>
+                          <div className='info_button ' type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIndex(index)}><FontAwesomeIcon icon={faTrash} /></div>
                         </div>
                         :
                         <div className="pe-2">
